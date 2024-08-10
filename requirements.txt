@@ -1,0 +1,6 @@
+asgiref==3.8.1
+Django==5.1
+django-browser-reload==1.13.0
+django-tailwind==3.8.0
+sqlparse==0.5.1
+tailwind==3.1.5b0
