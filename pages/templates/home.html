@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static tailwind_tags %}
+
+{% block title %}Honmepage{% endblock title %}
+
+{% block content %}
+    <div id="content" class='flex flex-col justify-center items-center h-full gap-4'>
+
+        
+            <div class="messages">
+                {% for message in messages %}
+                    
+                    <div class="message object-fit bg-lime-500 p-4 rounded">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div id="form">
+                <form method='POST' class = 'flex flex-row gap-4'>
+                    {% for field in form %}
+                        {{field}}
+                        {{errors}}
+                    {% endfor %}
+                    <button type='submit' class='bg-black flex justify-center items-center text-white px-10'>Create</button>
+                    {% csrf_token %}
+                </form>
+            </div>
+
+            {% if link %}
+                <a href="{{ link.get_absolute_url }}">Your New Link is Here</a>
+                
+            {% endif %}
+        
+    </div>
+{% endblock content %}
