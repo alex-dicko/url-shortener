@@ -5,17 +5,9 @@ from . models import link
 
 
 def url(request, id):
-    redirect = link.objects.get(id=id)
-
-    if redirect is not None:
-        return render(
-        request,
-        'redirect.html',
-        {
-            'url': redirect.redirect_link,
-        }
-    )
-    else:
+    try:
+        redirect = link.objects.get(id=id)
+    except:
         return render(
         request,
         'error.html',
@@ -23,6 +15,16 @@ def url(request, id):
             
         }
     )
+    
+    return render(
+    request,
+    'redirect.html',
+    {
+        'url': redirect.redirect_link,
+    }
+)
+    
+        
 
         
     
